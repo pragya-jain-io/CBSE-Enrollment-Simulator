@@ -2,7 +2,7 @@
 
 A Kotlin-based Spring WebFlux microservice to simulate CBSE student enrollment verification.
 
-## 🔧 Features
+## Features
 
 - Accepts POST requests with Aadhaar info
 - Returns:
@@ -11,7 +11,7 @@ A Kotlin-based Spring WebFlux microservice to simulate CBSE student enrollment v
     - 500 Error: Simulated internal error for retry logic testing
 - Stateless, in-memory simulation
 
-## 🧪 Sample Request
+## Sample Request
 
 ```bash
 curl -X POST http://localhost:8081/api/enroll \
