@@ -14,6 +14,6 @@ A Kotlin-based Spring WebFlux microservice to simulate CBSE student enrollment v
 ## Sample Request
 
 ```bash
-curl -X POST http://localhost:8081/api/enroll \
+curl -X POST http://localhost:8081/enroll \
 -H "Content-Type: application/json" \
 -d '{"aadhaar": "123456789012", "name": "Name", "dob": "2004-09-18"}'
