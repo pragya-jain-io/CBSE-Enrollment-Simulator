@@ -9,8 +9,7 @@ import reactor.core.publisher.Mono
 
 // It will handle web API requests
 @RestController
-// All requests handled here will be relative to the root path "/"
-@RequestMapping("/")
+
 class EnrollmentController(private val service: EnrollmentService) {
 
     // Handles POST requests to the "/enroll" URL, used for student enrollment
