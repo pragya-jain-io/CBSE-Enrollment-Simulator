@@ -16,7 +16,14 @@ class EnrollmentServiceTest {
     @Test
     fun `enroll a new student successfully`() {
         // Creating a test request for a new student
-        val request = EnrollmentRequest("111122223333", "Pragya", LocalDate.of(2012, 12, 12))
+        val request = EnrollmentRequest(
+            aadhaar = "123456789011",
+            rollNo = "1001",
+            name = "Pragya",
+            studentClass = "10",
+            school = "ABC Public School",
+            dob = LocalDate.of(2012, 12, 12)
+        )
         // Calling the service method and blocking to get the result
         val result = service.enrollStudent(request).block()
 
@@ -33,8 +40,14 @@ class EnrollmentServiceTest {
     // Test case 2: Same student should not be enrolled twice
     @Test
     fun `return conflict if student already enrolled`() {
-        val request = EnrollmentRequest("111100003333", "Pragya", LocalDate.of(2012, 12, 12))
-
+        val request = EnrollmentRequest(
+            aadhaar = "123456789012",
+            rollNo = "1001",
+            name = "Pragya",
+            studentClass = "10",
+            school = "ABC Public School",
+            dob = LocalDate.of(2012, 12, 12)
+        )
         // First enrollment should succeed
         service.enrollStudent(request).block()
 
@@ -49,7 +62,14 @@ class EnrollmentServiceTest {
     // Test case 3: Random server error simulation should happen sometimes
     @RepeatedTest(20)
     fun `occasionally simulate server error`() {
-        val request = EnrollmentRequest("999988887777", "Random", LocalDate.of(2012, 12, 12))
+        val request = EnrollmentRequest(
+            aadhaar = "123456789013",
+            rollNo = "1001",
+            name = "Pragya",
+            studentClass = "10",
+            school = "ABC Public School",
+            dob = LocalDate.of(2012, 12, 12)
+        )
         val result = service.enrollStudent(request).block()
 
         // It can be either success/failure/error — just check error path exists
